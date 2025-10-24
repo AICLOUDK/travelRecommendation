@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error loading travel data:', error));
 
-  // Function to clear results
+  // Clear results
   function clearResults() {
     resultsDiv.innerHTML = '';
     searchInput.value = '';
   }
 
-  // Function to create a card for each recommendation
+  // Create recommendation card
   function createCard(place) {
     const card = document.createElement('div');
     card.className = 'recommendation-card';
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return card;
   }
 
-  // Search functionality
+  // Search button event
   searchBtn.addEventListener('click', () => {
     const keyword = searchInput.value.trim().toLowerCase();
     if (!keyword) {
@@ -63,12 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let foundResults = false;
 
-    if (key === 'beach' || key === 'beaches') {
+    if (key === 'beach') {
       travelData.beaches.forEach(beach => {
         resultsDiv.appendChild(createCard(beach));
       });
       foundResults = true;
-    } else if (key === 'temple' || key === 'temples') {
+    } else if (key === 'temple') {
       travelData.temples.forEach(temple => {
         resultsDiv.appendChild(createCard(temple));
       });
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       // Check if keyword matches any country name
       const countryMatches = travelData.countries.filter(country =>
-        country.name.toLowerCase() === keyword
+        country.name.toLowerCase() === key
       );
       if (countryMatches.length > 0) {
         countryMatches.forEach(country => {
@@ -93,6 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Clear button functionality
+  // Clear button event
   clearBtn.addEventListener('click', clearResults);
 });

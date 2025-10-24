@@ -1,4 +1,6 @@
 # travelrecommendation.github.io
+https://aicloudk.github.io/travelrecommendation/travel_recommendation.html
+
 Explanation and Introduction to Pages
 Home Page (travel_recommendation.html)
 This is the landing page for the TravelBloom website.

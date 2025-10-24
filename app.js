@@ -1,82 +1,98 @@
-let apiData = null;
+document.addEventListener('DOMContentLoaded', () => {
+  const searchBtn = document.getElementById('searchBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const searchInput = document.getElementById('searchInput');
+  const resultsDiv = document.getElementById('results');
 
-fetch('travel_recommendation_api.json')
-  .then(response => response.json())
-  .then(data => {
-    apiData = data;
-    console.log('Fetched API Data:', apiData); // Confirm data fetched
+  let travelData = {};
+
+  // Fetch data from JSON file
+  fetch('travel_recommendation_api.json')
+    .then(response => response.json())
+    .then(data => {
+      travelData = data;
+      console.log('Travel data loaded:', travelData);
+    })
+    .catch(error => console.error('Error loading travel data:', error));
+
+  // Function to clear results
+  function clearResults() {
+    resultsDiv.innerHTML = '';
+    searchInput.value = '';
+  }
+
+  // Function to create a card for each recommendation
+  function createCard(place) {
+    const card = document.createElement('div');
+    card.className = 'recommendation-card';
+
+    const img = document.createElement('img');
+    img.src = place.imageUrl;
+    img.alt = place.name;
+
+    const name = document.createElement('h3');
+    name.textContent = place.name;
+
+    const desc = document.createElement('p');
+    desc.textContent = place.description;
+
+    card.appendChild(img);
+    card.appendChild(name);
+    card.appendChild(desc);
+
+    return card;
+  }
+
+  // Search functionality
+  searchBtn.addEventListener('click', () => {
+    const keyword = searchInput.value.trim().toLowerCase();
+    if (!keyword) {
+      alert('Please enter a keyword to search.');
+      return;
+    }
+
+    resultsDiv.innerHTML = '';
+
+    // Normalize keyword for plural/singular
+    let key = keyword;
+    if (key.endsWith('es')) {
+      key = key.slice(0, -2);
+    } else if (key.endsWith('s')) {
+      key = key.slice(0, -1);
+    }
+
+    let foundResults = false;
+
+    if (key === 'beach' || key === 'beaches') {
+      travelData.beaches.forEach(beach => {
+        resultsDiv.appendChild(createCard(beach));
+      });
+      foundResults = true;
+    } else if (key === 'temple' || key === 'temples') {
+      travelData.temples.forEach(temple => {
+        resultsDiv.appendChild(createCard(temple));
+      });
+      foundResults = true;
+    } else {
+      // Check if keyword matches any country name
+      const countryMatches = travelData.countries.filter(country =>
+        country.name.toLowerCase() === keyword
+      );
+      if (countryMatches.length > 0) {
+        countryMatches.forEach(country => {
+          country.cities.forEach(city => {
+            resultsDiv.appendChild(createCard(city));
+          });
+        });
+        foundResults = true;
+      }
+    }
+
+    if (!foundResults) {
+      resultsDiv.innerHTML = `<p>No recommendations found for "${keyword}". Please try another keyword.</p>`;
+    }
   });
 
-function search() {
-    const input = document.getElementById('searchInput').value.trim().toLowerCase();
-    let resultsContainer = document.getElementById('recommendations');
-    resultsContainer.innerHTML = ''; // Clear previous results
-
-    if (!apiData) return;
-
-    let recommendations = [];
-    if (input.includes('beach')) {
-        recommendations = apiData.beaches;
-    } else if (input.includes('temple')) {
-        recommendations = apiData.temples;
-    } else {
-        // Check country match
-        for (const country of apiData.countries) {
-            if (input.includes(country.name.toLowerCase())) {
-                recommendations = country.cities;
-                break;
-            }
-        }
-    }
-
-    if (recommendations.length > 0) {
-        recommendations.slice(0,2).forEach(place => {
-            const html = `
-                <div class="recommendation">
-                    <img src="${place.imageUrl}" alt="${place.name}">
-                    <div>
-                        <h4>${place.name}</h4>
-                        <p>${place.description}</p>
-                        ${displayCountryTime(place.name)}
-                    </div>
-                </div>
-            `;
-            resultsContainer.innerHTML += html;
-        });
-    } else {
-        resultsContainer.innerHTML = '<p>No recommendations found. Please try other keywords (e.g., beach, temple, country name).</p>';
-    }
-}
-
-function clearResults() {
-    document.getElementById('searchInput').value = '';
-    document.getElementById('recommendations').innerHTML = '';
-}
-
-// Optional: Display country time
-function displayCountryTime(placeName) {
-    const timezoneMap = {
-        'Sydney': 'Australia/Sydney',
-        'Melbourne': 'Australia/Melbourne',
-        'Tokyo': 'Asia/Tokyo',
-        'Kyoto': 'Asia/Tokyo',
-        'Rio de Janeiro': 'America/Sao_Paulo',
-        'São Paulo': 'America/Sao_Paulo',
-        'Angkor Wat': 'Asia/Phnom_Penh',
-        'Taj Mahal': 'Asia/Kolkata',
-        'Bora Bora': 'Pacific/Tahiti',
-        'Copacabana Beach': 'America/Sao_Paulo'
-    };
-    for (let city in timezoneMap) {
-        if (placeName.toLowerCase().includes(city.toLowerCase())) {
-            const options = { timeZone: timezoneMap[city], hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
-            const timeStr = new Date().toLocaleTimeString('en-US', options);
-            return `<p><strong>Local time:</strong> ${timeStr}</p>`;
-        }
-    }
-    return '';
-}
-
-function bookNow() {
-    alert("Booking functionality coming soon!");
-}
+  // Clear button functionality
+  clearBtn.addEventListener('click', clearResults);
+});

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contact Us - Travelsite</title>
+    <title>Contact Us - TravelBloom</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Navigation Bar for Contact Us page (No search) -->
+    <!-- Navigation Bar for Contact Us page -->
     <nav class="navbar">
-        <div class="logo">Travelsite</div>
+        <div class="logo">TravelBloom</div>
         <a href="travel_recommendation.html">Home</a>
         <a href="about_us.html">About Us</a>
         <a href="contact_us.html">Contact Us</a>
@@ -17,6 +17,10 @@
 
     <main class="contact-us-container">
         <h1>Contact Us</h1>
+
+        <!-- Contact banner image -->
+        <img src="images/contact_banner.jpg" alt="Contact Us" class="contact-banner" />
+
         <form id="contactForm">
             <label for="name">Name:</label><br />
             <input type="text" id="name" name="name" required /><br />
@@ -32,7 +36,6 @@
     </main>
 
     <script>
-        // Basic form submission handler
         const form = document.getElementById('contactForm');
         form.addEventListener('submit', function (e) {
             e.preventDefault();

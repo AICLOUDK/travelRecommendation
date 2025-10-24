@@ -1,4 +1,4 @@
-/* General styles */
+/* styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -112,6 +112,26 @@ body {
     color: #ffcc00;
 }
 
+.travel-intro {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.travel-images {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.travel-images img {
+    max-width: 45%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
 .results {
     padding: 30px;
     display: flex;
@@ -156,6 +176,7 @@ body {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .team-member {
@@ -168,7 +189,24 @@ body {
 }
 
 .team-member h3 {
-    margin-top: 0;
+    margin-top: 10px;
+}
+
+.team-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.contact-banner {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 8px;
 }
 
 form label {

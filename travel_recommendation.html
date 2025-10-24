@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Travel Recommendation Platform</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TravelBloom - Explore Your Next Destination</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Navbar -->
+    <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">
-            <img src="logo.png" alt="cognitiveclass.ai logo" height="32">
-            <span>Travel Recommendation</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="travel_recommendation.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search destinations or keywords...">
-            <button onclick="search()">Search</button>
-            <button onclick="clearResults()">Clear</button>
+        <div class="logo">TravelBloom</div>
+        <a href="travel_recommendation.html">Home</a>
+        <a href="about_us.html">About Us</a>
+        <a href="contact_us.html">Contact Us</a>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search destinations..." />
+            <button id="searchBtn">Search</button>
+            <button id="clearBtn">Clear</button>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="hero">
-        <div class="overlay"></div>
-        <section class="intro">
-            <h1>Explore, Discover, Book!</h1>
-            <p>Embark on a journey and uncover the world's most exciting destinations. Dive into new cultures, see breathtaking sights, and make unforgettable memories.</p>
-            <button onclick="bookNow()">Book Now</button>
-            <div class="social-media">
-                <a href="#"><img src="facebook-icon.png" alt="Facebook" height="24"></a>
-                <a href="#"><img src="twitter-icon.png" alt="Twitter" height="24"></a>
-                <a href="#"><img src="instagram-icon.png" alt="Instagram" height="24"></a>
+    <header class="hero" style="background-image: url('images/background.jpg');">
+        <div class="hero-content">
+            <h1>Discover New Places, Explore Cultures</h1>
+            <p>Unveil the wonders of the world with personalized travel recommendations.</p>
+            <button id="bookNowBtn" onclick="alert('Booking feature coming soon!')">Book Now</button>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook" class="social-icon">📘</a>
+                <a href="#" aria-label="Twitter" class="social-icon">🐦</a>
+                <a href="#" aria-label="Instagram" class="social-icon">📸</a>
             </div>
-        </section>
-        <section id="recommendations"></section>
-    </main>
+        </div>
+    </header>
 
-    <script src="app.js"></script>
+    <!-- Recommendations Section -->
+    <section id="results" class="results"></section>
+
+    <script src="script.js"></script>
 </body>
 </html>

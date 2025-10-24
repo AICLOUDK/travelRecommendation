@@ -1,0 +1,21 @@
+1. Project Structure
+travelRecommendation/
+│
+├── travel_recommendation.html        (Home Page)
+├── about_us.html                    (About Us Page)
+├── contact_us.html                  (Contact Us Page)
+├── travel_recommendation_api.json   (JSON data)
+├── script.js                       (JavaScript file)
+├── styles.css                      (CSS file for styling)
+├── images/                         (Folder containing all images)
+│     ├── sydney.jpg
+│     ├── melbourne.jpg
+│     ├── tokyo.jpg
+│     ├── kyoto.jpg
+│     ├── rio.jpg
+│     ├── sao_paulo.jpg
+│     ├── angkor_wat.jpg
+│     ├── taj_mahal.jpg
+│     ├── bora_bora.jpg
+│     ├── copacabana.jpg
+│     └── background.jpg

@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact Us - Travel Recommendation</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us - TravelBloom</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+    <!-- Navigation Bar for Contact Us page (No search) -->
     <nav class="navbar">
-        <div class="logo"><img src="logo.png" alt="Logo" height="32"><span>Travel Recommendation</span></div>
-        <ul class="nav-links">
-            <li><a href="travel_recommendation.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
+        <div class="logo">TravelBloom</div>
+        <a href="travel_recommendation.html">Home</a>
+        <a href="about_us.html">About Us</a>
+        <a href="contact_us.html">Contact Us</a>
     </nav>
-    <main class="intro" style="margin-top: 60px;">
-        <h2>Contact Us</h2>
+
+    <main class="contact-us-container">
+        <h1>Contact Us</h1>
         <form id="contactForm">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="message">Message:</label><br>
-            <textarea id="message" name="message" rows="4" cols="40" required></textarea><br><br>
+            <label for="name">Name:</label><br />
+            <input type="text" id="name" name="name" required /><br />
+
+            <label for="email">Email:</label><br />
+            <input type="email" id="email" name="email" required /><br />
+
+            <label for="message">Message:</label><br />
+            <textarea id="message" name="message" rows="5" required></textarea><br />
+
             <button type="submit">Submit</button>
         </form>
     </main>
+
+    <script>
+        // Basic form submission handler
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for contacting us, ' + form.name.value + '!');
+            form.reset();
+        });
+    </script>
 </body>
 </html>

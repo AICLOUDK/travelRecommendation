@@ -1,118 +1,198 @@
+/* General styles */
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background: url('background.jpg') no-repeat center center fixed;
-    background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar {
+    background-color: #004080;
+    color: white;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background: #003366dd;
-    padding: 1rem;
+    padding: 10px 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.navbar a {
     color: white;
-}
-
-.logo img { vertical-align: middle; }
-.logo span { margin-left: 8px; font-weight: bold; font-size: 1.2rem; }
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-}
-
-.nav-links li a { color: white; text-decoration: none; font-weight: bold; }
-
-.search-container {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.search-container input {
-    padding: 0.4rem;
-    border-radius: 4px;
-    border: none;
-    font-size: 1rem;
-}
-
-.search-container button {
-    padding: 0.4rem 1rem;
-    border-radius: 4px;
-    border: none;
-    background: #ff9900;
-    color: white;
-    cursor: pointer;
+    text-decoration: none;
     font-weight: bold;
 }
 
-.hero {
-    margin-top: 40px;
-    position: relative;
-    min-height: 80vh;
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.search-bar {
+    margin-left: auto;
     display: flex;
-    flex-direction: column;
+    gap: 10px;
+}
+
+.search-bar input[type="text"] {
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+    width: 200px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #003366;
+    color: white;
+}
+
+.hero {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    justify-content: center;
     align-items: center;
-}
-
-.overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.intro {
-    position: relative;
-    z-index: 2;
-    background: rgba(255, 255, 255, .85);
-    padding: 2rem;
-    margin-top: 3rem;
-    border-radius: 10px;
     text-align: center;
-    max-width: 600px;
+    position: relative;
 }
 
-.intro h1 { margin-top: 0; }
-.intro p { margin-bottom: 1.5rem; }
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 40px;
+    border-radius: 8px;
+}
 
-.intro button {
-    background: #007bff;
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.hero button {
+    background-color: #ff6600;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.hero button:hover {
+    background-color: #e65c00;
+}
+
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icon {
+    margin: 0 10px;
+    font-size: 1.5em;
+    color: white;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: #ffcc00;
+}
+
+.results {
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.recommendation-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    background-color: white;
+    text-align: center;
+}
+
+.recommendation-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.recommendation-card h3 {
+    margin: 10px 0;
+}
+
+.recommendation-card p {
+    padding: 0 10px 15px 10px;
+    font-size: 0.9em;
+    color: #333;
+}
+
+.about-us-container, .contact-us-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.team-members {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    flex: 1 1 200px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.team-member h3 {
+    margin-top: 0;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #004080;
     color: white;
     border: none;
-    padding: 0.65rem 1.4rem;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 10px 25px;
     cursor: pointer;
-    margin-bottom: 1rem;
+    border-radius: 5px;
 }
 
-.social-media a { margin: 0 6px; vertical-align: middle; }
-
-#recommendations {
-    position: relative;
-    z-index: 2;
-    margin-top: 2rem;
-    background: rgba(255,255,255,0.95);
-    border-radius: 8px;
-    max-width: 800px;
-    width: 100%;
-    padding: 2rem;
-}
-
-.recommendation {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 1rem;
-}
-
-.recommendation img {
-    width: 160px;
-    height: 110px;
-    object-fit: cover;
-    border-radius: 8px;
+form button:hover {
+    background-color: #003366;
 }
